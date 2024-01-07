@@ -1,3 +1,4 @@
 
 rm $HOME/Taskfile.yml
-rm -rf $HOME/.taskfiles
+rm -rf $HOME/.taskfile
+sudo rm /usr/bin/task
