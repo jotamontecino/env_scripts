@@ -8,7 +8,7 @@ tar -zxf /tmp/taskfile.tar.gz -C /tmp/
 rm /tmp/taskfile.tar.gz
 mkdir $HOME/.taskfiles
 echo "Create Home folder"
-cp -R /tmp/env_scripts-$VERSION $HOME/.taskfiles/
+cp -a /tmp/env_scripts-$VERSION/. $HOME/.taskfiles/
 
 ## Install taskfile
 
