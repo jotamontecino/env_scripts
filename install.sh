@@ -8,9 +8,10 @@ tar -zxf /tmp/taskfile.tar.gz -C /tmp/
 rm /tmp/taskfile.tar.gz
 mkdir $HOME/.taskfiles
 echo "Copy to Home folder"
-cp -a /tmp/env_scripts-$VERSION/. $HOME/.taskfiles
+cp -a /tmp/env_scripts-$VERSION/.taskfile/. $HOME/.taskfile
+mv /tmp/env_scripts-$VERSION/Taskfile.yml $HOME/Taskfile.yml
+
 rm -rf /tmp/env_scripts-$VERSION
-mv $HOME/.taskfiles/Taskfile.yml $HOME/Taskfile.yml
 
 ## Install taskfile
 
