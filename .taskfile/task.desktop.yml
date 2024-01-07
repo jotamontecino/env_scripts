@@ -1,0 +1,21 @@
+version: "3"
+
+tasks:
+  installChromium:
+    cmds:
+      - echo "WIP"
+  updateChromium:
+    cmds:
+      - echo "WIP"
+  installChrome:
+    cmds:
+      - echo "WIP"
+  updateChrome:
+    cmds:
+      - echo "WIP"
+  installObsidian:
+    cmds:
+      - echo "WIP"
+  updateObsidian:
+    cmds:
+      - echo "WIP"

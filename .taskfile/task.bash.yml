@@ -1,0 +1,7 @@
+version: "3"
+
+tasks:
+  installAliases:
+    cmds:
+      - echo "WIP"
+  

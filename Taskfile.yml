@@ -1,0 +1,14 @@
+version: "3"
+
+includes:
+  cli:
+    taskfile: $HOME/.taskfile/task.cli.yml
+
+tasks:
+  install:
+    cmds:
+      - task: cli:installPodman
+
+  remove:
+    cmds:
+      - task: cli:removebasics
