@@ -7,7 +7,7 @@ wget "https://github.com/jotamontecino/env_scripts/archive/refs/tags/v$VERSION.t
 tar -zxf /tmp/taskfile.tar.gz -C /tmp/
 rm /tmp/taskfile.tar.gz
 mkdir $HOME/.taskfiles
-echo "Create Home folder"
+echo "Copy to Home folder"
 cp -a /tmp/env_scripts-$VERSION/. $HOME/.taskfiles
 
 ## Install taskfile
