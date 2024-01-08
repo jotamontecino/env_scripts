@@ -3,29 +3,38 @@ version: "3"
 tasks:
   install:
     cmds:
-      - installChrome
-      - installObsidian
-      - installVsCode
-      - installDiscord
-      - installSignal
+      - task: installChrome
+      - task: installObsidian
+      - task: installVsCode
+      - task: installDiscord
+      - task: installSignal
   installChrome:
     cmds:
       - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
       - defer: rm /tmp/chrome.deb
       - sudo dpkg -i /tmp/chrome.deb
+  removeChrome:
+    cmds:
+      - sudo dpkg -P google-chrome-stable
   installObsidian:
     cmds:
       - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/obsidian_1.5.3_amd64.deb -O /tmp/obsidian.deb
       - defer: rm /tmp/obsidian.deb
       - sudo dpkg -i /tmp/obsidian.deb
+  removeObsidian:
+    cmds:
+      - sudo dpkg -P obsidian
   installVsCode:
     cmds:
       - wget https://go.microsoft.com/fwlink/?LinkID=760868 -O /tmp/vsCode.deb
       - defer: rm /tmp/vsCode.deb
       - sudo dpkg -i /tmp/vsCode.deb
+  removeVsCode:
+    cmds:
+      - sudo dpkg -P code
   installDiscord:
     cmds:
-      - wget https://discord.com/api/download/ptb?platform=linux&format=deb -O /tmp/discord.deb
+      - wget "https://discord.com/api/download/ptb?platform=linux&format=deb" -O /tmp/discord.deb
       - defer: rm /tmp/discord.deb
       - sudo dpkg -i /tmp/discord.deb
   installSignal:

@@ -7,16 +7,15 @@ vars:
 tasks:
   install:
     cmds:
-      - installBasics
-      - 
+      - task: installBasics
   remove:
     cmds:
-      - removebasics
+      - task: removebasics
   installBasics:
     cmds:
       - sudo apt-get update
-      - sudo apt-get -y install nano unzip exa duf bat buildah podman
+      - sudo apt-get -y install nano unzip exa duf bat buildah podman libu2f-udev
   removebasics:
     interactive: true
     cmds:
-      - sudo apt-get remove nano unzip exa duf bat buildah podman
+      - sudo apt-get remove nano unzip exa duf bat buildah podman libu2f-udev
