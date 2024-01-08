@@ -5,28 +5,19 @@ vars:
 
 
 tasks:
+  install:
+    cmds:
+      - installBasics
+      - installPodman
+      - 
+    remove:
+      - removePodman
+      - removebasics
   installBasics:
     cmds:
       - sudo apt-get update
-      - sudo apt-get -y install nano unzip
+      - sudo apt-get -y install nano unzip exa duf bat buildah podman
   removebasics:
     interactive: true
     cmds:
-      - sudo apt-get remove nano unzip
-      - sudo apt autoremove
-
-  installPodman:
-    deps: [ installBasics ]
-    cmds:
-      - wget https://github.com/containers/podman/releases/download/v4.8.2/podman-remote-release-darwin_amd64.zip -O /tmp/podman.zip
-      - defer: rm -f /tmp/podman.zip
-      - unzip /tmp/podman.zip -d /tmp
-      - defer: rm -rf /tmp/podman
-      - sudo mv /tmp/podman-{{.PODMAN_VERSION}}/usr/bin/podman /usr/bin/podman
-  removePodman:
-    cmds:
-      - sudo rm /usr/bin/podman
-  updatePodman:
-    cmds:
-      - task: removePodman
-      - task: installPodman
+      - sudo apt-get remove nano unzip exa duf bat buildah podman

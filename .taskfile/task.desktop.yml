@@ -1,21 +1,36 @@
 version: "3"
 
 tasks:
-  installChromium:
+  install:
     cmds:
-      - echo "WIP"
-  updateChromium:
-    cmds:
-      - echo "WIP"
+      - installChrome
+      - installObsidian
+      - installVsCode
+      - installDiscord
+      - installSignal
   installChrome:
     cmds:
-      - echo "WIP"
-  updateChrome:
-    cmds:
-      - echo "WIP"
+      - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
+      - defer: rm /tmp/chrome.deb
+      - sudo dpkg -i /tmp/chrome.deb
   installObsidian:
     cmds:
-      - echo "WIP"
-  updateObsidian:
+      - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/obsidian_1.5.3_amd64.deb -O /tmp/obsidian.deb
+      - defer: rm /tmp/obsidian.deb
+      - sudo dpkg -i /tmp/obsidian.deb
+  installVsCode:
     cmds:
-      - echo "WIP"
+      - wget https://go.microsoft.com/fwlink/?LinkID=760868 -O /tmp/vsCode.deb
+      - defer: rm /tmp/vsCode.deb
+      - sudo dpkg -i /tmp/vsCode.deb
+  installDiscord:
+    cmds:
+      - wget https://discord.com/api/download/ptb?platform=linux&format=deb -O /tmp/discord.deb
+      - defer: rm /tmp/discord.deb
+      - sudo dpkg -i /tmp/discord.deb
+  installSignal:
+    cmds:
+      - wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+      - cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+      - echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+      - sudo apt update && sudo apt install signal-desktop
