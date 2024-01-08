@@ -8,10 +8,9 @@ tasks:
   install:
     cmds:
       - installBasics
-      - installPodman
       - 
-    remove:
-      - removePodman
+  remove:
+    cmds:
       - removebasics
   installBasics:
     cmds:

@@ -3,11 +3,14 @@ version: "3"
 includes:
   cli:
     taskfile: $HOME/.taskfile/task.cli.yml
+  desktop:
+    taskfile: $HOME/.taskfile/task.desktop.yml
 
 tasks:
   install:
     cmds:
-      - task: cli:installPodman
+      - task: cli:install
+      - task: desktop:install
 
   remove:
     cmds:
