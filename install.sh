@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=0.0.3
+VERSION=0.0.4
 
 ## Download github
 echo "Downloading taskfiles"
@@ -9,7 +9,9 @@ rm /tmp/taskfile.tar.gz
 mkdir $HOME/.taskfile
 echo "Copy to Home folder"
 cp -a /tmp/env_scripts-$VERSION/.taskfile/. $HOME/.taskfile
+mv /tmp/env_scripts-$VERSION/
 mv /tmp/env_scripts-$VERSION/Taskfile.yml $HOME/Taskfile.yml
+sudo cp -r /tmp/env_scripts-$VERSION/usr/* /usr/
 
 rm -rf /tmp/env_scripts-$VERSION
 

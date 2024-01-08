@@ -1,5 +1,8 @@
 version: "3"
 
+vars:
+  LAPCE_VERSION: 0.3.1
+
 tasks:
   install:
     cmds:
@@ -37,9 +40,22 @@ tasks:
       - wget "https://discord.com/api/download/ptb?platform=linux&format=deb" -O /tmp/discord.deb
       - defer: rm /tmp/discord.deb
       - sudo dpkg -i /tmp/discord.deb
+  removeDiscord:
+    cmds:
+      - sudo dpkg -P discord-ptb
   installSignal:
     cmds:
       - wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
       - cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
       - echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
       - sudo apt update && sudo apt install signal-desktop
+  removeSignal:
+    cmds:
+      - sudo dpkg -P signal-desktop
+  installLapce:
+    cmds:
+      - wget https://github.com/lapce/lapce/releases/download/v{{.LAPCE_VERSION}}/Lapce-linux.tar.gz -O /tmp/lapce.tar.gz
+      - defer: rm /tmp/lapce.tar.gz
+      - tar -zxf /tmp/lapce.tar.gz -C /tmp/
+      - defer: rm -rf /tmp/Lapce
+      - sudo cp /tmp/Lapce/lapce /usr/bin/Lapce
