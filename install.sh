@@ -12,7 +12,9 @@ cp -a /tmp/env_scripts-$VERSION/.taskfile/. $HOME/.taskfile
 mv /tmp/env_scripts-$VERSION/
 mv /tmp/env_scripts-$VERSION/Taskfile.yml $HOME/Taskfile.yml
 cp /tmp/env_scripts-$VERSION/.bash_aliases $HOME/.bash_aliases
-sudo cp -rgit  /tmp/env_scripts-$VERSION/usr/* /usr/
+mkdir -p $HOME/.config
+cp /tmp/env_scripts-$VERSION/.config/* $HOME/.config
+sudo cp -r  /tmp/env_scripts-$VERSION/usr/* /usr/
 
 rm -rf /tmp/env_scripts-$VERSION
 

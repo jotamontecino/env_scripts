@@ -59,6 +59,9 @@ tasks:
       - tar -zxf /tmp/lapce.tar.gz -C /tmp/
       - defer: rm -rf /tmp/Lapce
       - sudo cp /tmp/Lapce/lapce /usr/bin/Lapce
+  removeLapce:
+    cmds:
+      - rm /usr/bin/Lapce
   installSlack:
     cmds:
       - wget https://downloads.slack-edge.com/releases/linux/4.35.131/prod/x64/slack-desktop-4.35.131-amd64.deb -O /tmp/slack.deb
@@ -67,7 +70,13 @@ tasks:
   removeSlack:
     cmds:
       - sudo dpkg -P 
-  installSpotify:
+  installWezterm:
     cmds:
-  removeSpotify:
+      - wget https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/WezTerm-20230712-072601-f4abf8fd-Ubuntu20.04.AppImage -O /tmp/wezterm.AppImage
+      - defer: rm /tmp/wezterm.AppImage
+      - sudo chmod +x /tmp/wezterm.AppImage
+      - defer: rm /tmp/wezterm.AppImage
+      - cp /tmp/wezterm.AppImage /usr/bin/wezterm.AppImage
+  removeWezterm:
     cmds:
+      - rm /usr/bin/wezterm.AppImage
