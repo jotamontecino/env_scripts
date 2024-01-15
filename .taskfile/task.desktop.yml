@@ -59,3 +59,15 @@ tasks:
       - tar -zxf /tmp/lapce.tar.gz -C /tmp/
       - defer: rm -rf /tmp/Lapce
       - sudo cp /tmp/Lapce/lapce /usr/bin/Lapce
+  installSlack:
+    cmds:
+      - wget https://downloads.slack-edge.com/releases/linux/4.35.131/prod/x64/slack-desktop-4.35.131-amd64.deb -O /tmp/slack.deb
+      - defer: rm /tmp/slack.deb
+      - sudo dpkg -i /tmp/slack.deb
+  removeSlack:
+    cmds:
+      - sudo dpkg -P 
+  installSpotify:
+    cmds:
+  removeSpotify:
+    cmds:

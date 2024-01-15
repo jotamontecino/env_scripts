@@ -1,0 +1,53 @@
+# ~/.config/starship.toml
+
+# Use custom format
+format = '''
+[┌─](bold green)$username$hostname: $directory$git_branch$git_status$package $git_metrics
+[│](bold green)$rust
+[└─ $nodejs >](bold green) '''
+
+
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = 'on [$symbol$branch]($style) '
+[git_status]
+untracked = ""
+format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
+modified = '*'
+[directory]
+truncation_length = 100
+truncate_to_repo = false
+style = " yellow"
+format = "[:$path]($style)[$read_only]($read_only_style) "
+[username]
+style_user = "green bold"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+[hostname]
+ssh_only = false
+format = '@(bold)[$ssh_symbol](bold blue)[$hostname](bold red)'
+trim_at = '.companyname.com'
+disabled = false
+
+[nodejs]
+format = "via [ Node.js $version](bold green) "
+detect_files = ["package.json", ".node-version"]
+detect_folders = ["node_modules"]
+
+
+#format = """
+#[╭─user───❯](bold blue) $username
+#[┣─system─❯](bold yellow) $hostname
+#[┣─project❯](bold red) $directory$rust$git_branch$git_status$package$golang$terraform$docker_context$python$docker_context$nodejs
+#[╰─cmd────❯](bold green) 
+#"""

@@ -19,3 +19,19 @@ tasks:
     interactive: true
     cmds:
       - sudo apt-get remove nano unzip exa duf bat buildah podman libu2f-udev
+  installFonts:
+    cmds:
+      - wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip -O /tmp/firacode.zip
+      - defer: rm /tmp/firacode.zip
+      - mkdir /tmp/fonts
+      - defer: rm -rf /tmp/fonts
+      - unzip -d /tmp/fonts /tmp/firacode.zip
+      - rm /tmp/fonts/LICENSE
+      - rm /tmp/fonts/README.md
+      - mkdir -p $HOME/.local/share/fonts
+      - mv /tmp/fonts/* $HOME/.local/share/fonts
+      - fc-cache -f -v
+  installStarship:
+    cmds:
+      - curl -sS https://starship.rs/install.sh | sh
+      - echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
