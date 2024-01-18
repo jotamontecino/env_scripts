@@ -3,7 +3,9 @@
 alias ..='cd ..'
 alias ...='cd ../..'
 alias bat='batcat'
-alias llt='exa -alF -T -s type -r'
+alias l='exa -FT -H -s type --git  --group-directories-first -1'
+alias ll='exa --icons -lFHT --group-directories-first --git'
+alias llt='exa -alFT -s type --group-directories-first --git'
 
 # Bind UP/Down keys to search history functions
 bind '"\e[A": history-search-backward'

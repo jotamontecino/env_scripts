@@ -75,8 +75,7 @@ tasks:
       - wget https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/WezTerm-20230712-072601-f4abf8fd-Ubuntu20.04.AppImage -O /tmp/wezterm.AppImage
       - defer: rm /tmp/wezterm.AppImage
       - sudo chmod +x /tmp/wezterm.AppImage
-      - defer: rm /tmp/wezterm.AppImage
-      - cp /tmp/wezterm.AppImage /usr/bin/wezterm.AppImage
+      - sudo cp /tmp/wezterm.AppImage /usr/bin/wezterm.AppImage
   removeWezterm:
     cmds:
       - rm /usr/bin/wezterm.AppImage
