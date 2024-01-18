@@ -9,7 +9,6 @@ rm /tmp/taskfile.tar.gz
 mkdir $HOME/.taskfile
 echo "Copy to Home folder"
 cp -a /tmp/env_scripts-$VERSION/.taskfile/. $HOME/.taskfile
-mv /tmp/env_scripts-$VERSION/
 mv /tmp/env_scripts-$VERSION/Taskfile.yml $HOME/Taskfile.yml
 cp /tmp/env_scripts-$VERSION/.bash_aliases $HOME/.bash_aliases
 mkdir -p $HOME/.config
