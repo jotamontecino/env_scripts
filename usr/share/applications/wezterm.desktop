@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Wezterm
+Comment=Terminal
+Exec=/usr/bin/wezterm.AppImage
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/wezterm/logo.svg
+NoDisplay=false

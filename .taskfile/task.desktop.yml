@@ -1,0 +1,81 @@
+version: "3"
+
+vars:
+  LAPCE_VERSION: 0.3.1
+
+tasks:
+  install:
+    cmds:
+      - task: installChrome
+      - task: installObsidian
+      - task: installVsCode
+      - task: installDiscord
+      - task: installSignal
+  installChrome:
+    cmds:
+      - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
+      - defer: rm /tmp/chrome.deb
+      - sudo dpkg -i /tmp/chrome.deb
+  removeChrome:
+    cmds:
+      - sudo dpkg -P google-chrome-stable
+  installObsidian:
+    cmds:
+      - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v1.5.3/obsidian_1.5.3_amd64.deb -O /tmp/obsidian.deb
+      - defer: rm /tmp/obsidian.deb
+      - sudo dpkg -i /tmp/obsidian.deb
+  removeObsidian:
+    cmds:
+      - sudo dpkg -P obsidian
+  installVsCode:
+    cmds:
+      - wget https://go.microsoft.com/fwlink/?LinkID=760868 -O /tmp/vsCode.deb
+      - defer: rm /tmp/vsCode.deb
+      - sudo dpkg -i /tmp/vsCode.deb
+  removeVsCode:
+    cmds:
+      - sudo dpkg -P code
+  installDiscord:
+    cmds:
+      - wget "https://discord.com/api/download/ptb?platform=linux&format=deb" -O /tmp/discord.deb
+      - defer: rm /tmp/discord.deb
+      - sudo dpkg -i /tmp/discord.deb
+  removeDiscord:
+    cmds:
+      - sudo dpkg -P discord-ptb
+  installSignal:
+    cmds:
+      - wget -O- https://updates.signal.org/desktop/apt/keys.asc | gpg --dearmor > signal-desktop-keyring.gpg
+      - cat signal-desktop-keyring.gpg | sudo tee /usr/share/keyrings/signal-desktop-keyring.gpg > /dev/null
+      - echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/signal-desktop-keyring.gpg] https://updates.signal.org/desktop/apt xenial main' | sudo tee /etc/apt/sources.list.d/signal-xenial.list
+      - sudo apt update && sudo apt install signal-desktop
+  removeSignal:
+    cmds:
+      - sudo dpkg -P signal-desktop
+  installLapce:
+    cmds:
+      - wget https://github.com/lapce/lapce/releases/download/v{{.LAPCE_VERSION}}/Lapce-linux.tar.gz -O /tmp/lapce.tar.gz
+      - defer: rm /tmp/lapce.tar.gz
+      - tar -zxf /tmp/lapce.tar.gz -C /tmp/
+      - defer: rm -rf /tmp/Lapce
+      - sudo cp /tmp/Lapce/lapce /usr/bin/Lapce
+  removeLapce:
+    cmds:
+      - rm /usr/bin/Lapce
+  installSlack:
+    cmds:
+      - wget https://downloads.slack-edge.com/releases/linux/4.35.131/prod/x64/slack-desktop-4.35.131-amd64.deb -O /tmp/slack.deb
+      - defer: rm /tmp/slack.deb
+      - sudo dpkg -i /tmp/slack.deb
+  removeSlack:
+    cmds:
+      - sudo dpkg -P 
+  installWezterm:
+    cmds:
+      - wget https://github.com/wez/wezterm/releases/download/20230712-072601-f4abf8fd/WezTerm-20230712-072601-f4abf8fd-Ubuntu20.04.AppImage -O /tmp/wezterm.AppImage
+      - defer: rm /tmp/wezterm.AppImage
+      - sudo chmod +x /tmp/wezterm.AppImage
+      - sudo cp /tmp/wezterm.AppImage /usr/bin/wezterm.AppImage
+  removeWezterm:
+    cmds:
+      - rm /usr/bin/wezterm.AppImage

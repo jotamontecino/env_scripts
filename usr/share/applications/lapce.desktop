@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Lapce
+Comment=IDE
+Exec=/usr/bin/Lapce
+Type=Application
+Terminal=false
+Icon=/usr/share/icons/lapce/logo.png
+NoDisplay=false
