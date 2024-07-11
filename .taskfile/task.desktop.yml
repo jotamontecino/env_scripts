@@ -30,7 +30,7 @@ tasks:
       - sudo dpkg -P google-chrome-stable
   installObsidian:
     cmds:
-      - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v{{.OBSIDIAN_VERSION}}/obsidian-{{.OBSIDIAN_VERSION}}_amd64.deb -O /tmp/obsidian.deb
+      - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v{{.OBSIDIAN_VERSION}}/obsidian-{{.OBSIDIAN_VERSION}}-amd64.deb -O /tmp/obsidian.deb
       - defer: rm /tmp/obsidian.deb
       - sudo dpkg -i /tmp/obsidian.deb
   removeObsidian:
@@ -63,7 +63,7 @@ tasks:
       - sudo dpkg -P signal-desktop
   installLapce:
     cmds:
-      - wget https://github.com/lapce/lapce/releases/download/v{{.LAPCE_VERSION}}/Lapce-linux.tar.gz -O /tmp/lapce.tar.gz
+      - wget https://github.com/lapce/lapce/releases/download/v{{.LAPCE_VERSION}}/Lapce-linux--amd64.tar.gz -O /tmp/lapce.tar.gz
       - defer: rm /tmp/lapce.tar.gz
       - tar -zxf /tmp/lapce.tar.gz -C /tmp/
       - defer: rm -rf /tmp/Lapce
