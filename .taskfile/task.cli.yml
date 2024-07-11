@@ -44,7 +44,6 @@ tasks:
       - wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v{{.EXA_VERSION}}.zip -O /tmp/exa.zip
       - defer: rm /tmp/exa.zip
       - mkdir /tmp/exa
-      - defer: rm -rf /tmp/exa
       - unzip -d /tmp/exa /tmp/exa.zip
       - sudo cp /tmp/exa/bin/exa /usr/bin/exa
       - sudo cp /tmp/exa/completion/* /etc/bash_completion.d/
