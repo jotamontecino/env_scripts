@@ -2,12 +2,16 @@ version: "3"
 
 vars:
   PODMAN_VERSION: "4.8.2"
+  EXA_VERSION: "0.10.1"
 
 
 tasks:
   install:
     cmds:
       - task: installBasics
+      - task: installFonts
+      - task: installStarship
+      - task: installExa
   remove:
     cmds:
       - task: removebasics
@@ -35,3 +39,13 @@ tasks:
     cmds:
       - curl -sS https://starship.rs/install.sh | sh
       - echo 'eval "$(starship init bash)"' >> $HOME/.bashrc
+  installExa:
+    cmds:
+      - wget https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v{{.EXA_VERSION}}.zip -O /tmp/exa.zip
+      - defer: rm /tmp/exa.zip
+      - mkdir /tmp/exa
+      - defer: rm -rf /tmp/exa
+      - unzip -d /tmp/exa /tmp/exa.zip
+      - sudo cp /tmp/exa/bin/exa /usr/bin/exa
+      - sudo cp /tmp/exa/completion/* /etc/bash_completion.d/
+      - sudo cp /tmp/exa/man/* /usr/share/man/man1/
