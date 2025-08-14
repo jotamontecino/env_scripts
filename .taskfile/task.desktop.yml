@@ -34,7 +34,7 @@ tasks:
       - sudo dpkg -i /tmp/opera.deb
   installObsidian:
     cmds:
-      - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v{{.OBSIDIAN_VERSION}}/obsidian-{{.OBSIDIAN_VERSION}}-amd64.deb -O /tmp/obsidian.deb
+      - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v{{.OBSIDIAN_VERSION}}/obsidian_{{.OBSIDIAN_VERSION}}_amd64.deb -O /tmp/obsidian.deb
       - defer: rm /tmp/obsidian.deb
       - sudo dpkg -i /tmp/obsidian.deb
   removeObsidian:
