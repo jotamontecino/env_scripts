@@ -1,10 +1,9 @@
 version: "3"
 
 vars:
-  LAPCE_VERSION: 0.4.0
-  OBSIDIAN_VERSION: 1.6.5
-  WERTERM_HASH: "20240203-110809-5046fc22"
-  SLACK_VERSION: 4.39.88
+  LAPCE_VERSION: 0.4.3
+  OBSIDIAN_VERSION: 1.8.10
+  WEZTERM_HASH: "20240203-110809-5046fc22"
   OBS_STUDIO_VERSION: 30.1.2
 
 tasks:
@@ -16,7 +15,6 @@ tasks:
       - task: installDiscord
       - task: installSignal
       - task: installLapce
-      - task: installSlack
       - task: installWezterm
       - task: installGitButtler
       - task: installObsStudio
@@ -71,17 +69,9 @@ tasks:
   removeLapce:
     cmds:
       - rm /usr/bin/Lapce
-  installSlack:
-    cmds:
-      - wget https://downloads.slack-edge.com/desktop-releases/linux/x64/{{.SLACK_VERSION}}/slack-desktop-{{.SLACK_VERSION}}-amd64.deb -O /tmp/slack.deb
-      - defer: rm /tmp/slack.deb
-      - sudo dpkg -i /tmp/slack.deb
-  removeSlack:
-    cmds:
-      - sudo dpkg -P slack-desktop
   installWezterm:
     cmds:
-      - wget https://github.com/wez/wezterm/releases/download/{{.WERTERM_HASH}}/WezTerm-{{.WERTERM_HASH}}-Ubuntu20.04.AppImage -O /tmp/wezterm.AppImage
+      - wget https://github.com/wezterm/wezterm/releases/download/{{.WERTERM_HASH}}/WezTerm-{{.WERTERM_HASH}}-Ubuntu20.04.AppImage -O /tmp/wezterm.AppImage
       - defer: rm /tmp/wezterm.AppImage
       - sudo chmod +x /tmp/wezterm.AppImage
       - sudo cp /tmp/wezterm.AppImage /usr/bin/wezterm.AppImage
