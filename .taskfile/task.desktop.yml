@@ -26,6 +26,11 @@ tasks:
   removeChrome:
     cmds:
       - sudo dpkg -P google-chrome-stable
+  installOpera:
+    cmds:
+      - wget https://download5.operacdn.com/ftp/pub/opera/desktop/120.0.5543.161/linux/opera-stable_120.0.5543.161_amd64.deb -O /tmp/opera.deb
+      - defer: rm /tmp/opera.deb
+      - sudo dpkg -i /tmp/opera.deb
   installObsidian:
     cmds:
       - wget https://github.com/obsidianmd/obsidian-releases/releases/download/v{{.OBSIDIAN_VERSION}}/obsidian-{{.OBSIDIAN_VERSION}}-amd64.deb -O /tmp/obsidian.deb
